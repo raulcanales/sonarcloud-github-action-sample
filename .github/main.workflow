@@ -1,9 +1,9 @@
 workflow "Build" {
   on = "push"
-  resolves = ["Build"]
+  resolves = ["Maven Build"]
 }
 
-action "Build" {
-  uses = "LucaFeger/action-maven-cli@master"
-  args = "clean package"
+action "Maven Build" {
+  uses = "xlui/action-maven-cli/jdk8@master"
+  args = "clean"
 }
