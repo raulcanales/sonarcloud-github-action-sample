@@ -1,9 +1,9 @@
-workflow "Build" {
+workflow "Build and analyze" {
   on = "push"
-  resolves = ["Maven Build"]
+  resolves = ["build"]
 }
 
-action "Maven Build" {
+action "build" {
   uses = "xlui/action-maven-cli/jdk8@master"
-  args = "clean"
+  args = "clean package sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=simonbrandhof_sonarcloud-github-action-sample -Dsonar.organization=simonbrandhof-github"
 }
