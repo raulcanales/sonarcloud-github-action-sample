@@ -6,5 +6,5 @@ workflow "Build and analyze" {
 action "build" {
   uses = "xlui/action-maven-cli/jdk8@master"
   args = "clean package sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=simonbrandhof_sonarcloud-github-action-sample -Dsonar.organization=simonbrandhof-github"
-  secrets = ["SONAR_TOKEN"]
+  secrets = ["GITHUB_TOKEN", "SONAR_TOKEN"]
 }
