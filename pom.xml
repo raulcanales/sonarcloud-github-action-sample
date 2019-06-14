@@ -4,7 +4,8 @@
   <groupId>io.sonarcloud.github.action.sample</groupId>
   <artifactId>maven-sample</artifactId>
   <version>0.1-SNAPSHOT</version>
-
+  <name>sonarcloud-github-action-sample</name>
+  
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
