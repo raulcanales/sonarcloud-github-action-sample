@@ -11,9 +11,10 @@
     <maven.compiler.target>1.8</maven.compiler.target>
 
     <!-- SonarCloud -->
-    <sonar.projectKey>simonbrandhof_sonarcloud-github-action-sample</sonar.projectKey>
-    <sonar.organization>simonbrandhof-github</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    <sonar.organization>simonbrandhof-github</sonar.organization>
+    <sonar.projectKey>simonbrandhof_sonarcloud-github-action-sample</sonar.projectKey>
+    <sonar.projectName>GitHub Actions Sample</sonar.projectName>
   </properties>
 
   <build>
