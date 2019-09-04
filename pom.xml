@@ -9,5 +9,23 @@
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+
+    <!-- SonarCloud -->
+    <sonar.projectKey>simonbrandhof_sonarcloud-github-action-sample</sonar.projectKey>
+    <sonar.organization>simonbrandhof-github</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <!-- see versions at https://search.maven.org/search?q=g:org.codehaus.mojo%20AND%20a:sonar-maven-plugin -->
+          <version>3.6.1.1688</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 </project>
