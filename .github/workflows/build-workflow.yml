@@ -8,10 +8,11 @@ on:
 
 jobs:
   sonarcloud:
+    name: SonarCloud
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Scan code with SonarCloud
+      - name: Scan
         uses: SonarSource/sonarcloud-github-action@feature/sb/drop-pr-filtering
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
