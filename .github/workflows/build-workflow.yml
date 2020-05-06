@@ -27,7 +27,7 @@ jobs:
       - name: Cache dotnet tools
         uses: actions/cache@v1
         with:
-          path: $USERPROFILE/.dotnet/tools
+          path: ~/.dotnet/tools
           key: ${{ runner.os }}-dotnettools
           restore-keys: ${{ runner.os }}-dotnettools
       - name: Install SonarCloud scanner
