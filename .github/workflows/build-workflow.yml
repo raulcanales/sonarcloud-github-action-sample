@@ -26,8 +26,8 @@ jobs:
       - name: Install SonarCloud scanner
         # The --version argument is optional. If it is omitted the latest version will be installed.
         run: |
-          dotnet tool install --global dotnet-sonarscanner --version 4.8.0
-          dotnet tool install --global dotnet-sonarscanner --version 4.8.0
+          dotnet tool update --global dotnet-sonarscanner --version 4.8.0
+          dotnet tool update --global dotnet-sonarscanner --version 4.8.0
       - name: Build
         env:
           # Needed to get some information about the pull request, if any
