@@ -23,10 +23,15 @@ jobs:
           fetch-depth: 0
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.0
+      - name: Cache dotnet tools
+        uses: actions/cache@v2
+        with:
+          path: "%USERPROFILE%\.dotnet\tools"
+          key: ${{ runner.os }}-dotnettools
+          restore-keys: ${{ runner.os }}-dotnettools
       - name: Install SonarCloud scanner
         # The --version argument is optional. If it is omitted the latest version will be installed.
         run: |
-          dotnet tool update --global dotnet-sonarscanner --version 4.8.0
           dotnet tool update --global dotnet-sonarscanner --version 4.8.0
       - name: Build
         env:
