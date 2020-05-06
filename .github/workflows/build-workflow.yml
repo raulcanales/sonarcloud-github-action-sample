@@ -33,7 +33,7 @@ jobs:
           # SonarCloud access token should be generated from https://sonarcloud.io/account/security/
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          SonarScanner.MSBuild.exe begin /k:"simonbrandhof_sonarcloud-github-action-sample" /o:"simonbrandhof-github"
-          MSBuild.exe SomeConsoleApplication.sln /t:Rebuild
-          SonarScanner.MSBuild.exe end
+          dotnet sonarscanner begin /k:"simonbrandhof_sonarcloud-github-action-sample" /o:"simonbrandhof-github"
+          dotnet build SomeConsoleApplication.sln
+          dotnet sonarscanner end
 
