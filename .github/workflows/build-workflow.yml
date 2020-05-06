@@ -21,9 +21,6 @@ jobs:
         with:
           # Shallow clones should be disabled for a better relevancy of analysis
           fetch-depth: 0
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.0.0
-        
       - name: Cache dotnet tools
         uses: actions/cache@v1
         with:
