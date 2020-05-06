@@ -23,5 +23,17 @@ jobs:
           fetch-depth: 0
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.0
+      - name: Install SonarCloud scanner
+        # The --version argument is optional. If it is omitted the latest version will be installed.
+        run: dotnet tool install --global dotnet-sonarscanner --version 4.8.0
       - name: Build
-        run: MSBuild.exe /t:Rebuild
+        env:
+          # Needed to get some information about the pull request, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # SonarCloud access token should be generated from https://sonarcloud.io/account/security/
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          SonarScanner.MSBuild.exe begin /k:"simonbrandhof_sonarcloud-github-action-sample" /o:"simonbrandhof-github"
+          MSBuild.exe SomeConsoleApplication.sln /t:Rebuild
+          SonarScanner.MSBuild.exe end
+
