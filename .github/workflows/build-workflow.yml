@@ -48,14 +48,14 @@ jobs:
           dotnet tool list --tool-path $HOME/.sonar/dotnet-sonarscanner
           Get-ChildItem -Path $HOME/.sonar -Recurse -Force
 
-#      - name: Build
-#        env:
-#          # Needed to get some information about the pull request, if any
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#          # SonarCloud access token should be generated from https://sonarcloud.io/account/security/
-#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#        run: |
-#          dotnet ~/.sonar/dotnet-sonarscanner begin /k:"simonbrandhof_sonarcloud-github-action-sample" /o:"simonbrandhof-github" /d:sonar.host.url="https://sonarcloud.io"
-#          dotnet build SomeConsoleApplication.sln
-#          dotnet ~/.sonar/dotnet-sonarscanner end
+      - name: Build
+        env:
+          # Needed to get some information about the pull request, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # SonarCloud access token should be generated from https://sonarcloud.io/account/security/
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          dotnet sonarscanner begin /k:"simonbrandhof_sonarcloud-github-action-sample" /o:"simonbrandhof-github" /d:sonar.host.url="https://sonarcloud.io"
+          dotnet build SomeConsoleApplication.sln
+          dotnet dotnet-sonarscanner end
 
