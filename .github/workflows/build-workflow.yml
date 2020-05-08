@@ -47,13 +47,14 @@ jobs:
           Get-ChildItem -Path "$HOME\.sonar\scanner" -Recurse -Force
 
       - name: Build
+        shell: powershell
         env:
           # Needed to get some information about the pull request, if any
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # SonarCloud access token should be generated from https://sonarcloud.io/account/security/
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          $HOME\.sonar\scanner\dotnet-sonarscanner.exe begin /k:"simonbrandhof_sonarcloud-github-action-sample" /o:"simonbrandhof-github" /d:sonar.host.url="https://sonarcloud.io"
+          C:\Users\runneradmin\.sonar\scanner\dotnet-sonarscanner.exe begin /k:"simonbrandhof_sonarcloud-github-action-sample" /o:"simonbrandhof-github" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build SomeConsoleApplication.sln
-          $HOME\.sonar\scanner\dotnet-sonarscanner.exe end
+          "$HOME\.sonar\scanner\dotnet-sonarscanner.exe" end
 
