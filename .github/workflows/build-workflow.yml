@@ -35,7 +35,8 @@ jobs:
         # The --version argument is optional. If it is omitted the latest version will be installed.
         shell: powershell
         run: |
-          dotnet tool update dotnet-sonarscanner --tool-path ~/.sonar/dotnet-sonarscanner --version 4.8.0
+          New-Item -Path $HOME/.sonar/dotnet-sonarscanner -ItemType Directory
+          dotnet tool update dotnet-sonarscanner --tool-path $HOME/.sonar/dotnet-sonarscanner --version 4.8.0
 
 
       - name: Debug
@@ -44,8 +45,8 @@ jobs:
           # The --version argument is optional. If it is omitted the latest version will be installed.
         run: |
           dotnet tool list
-          dotnet tool list --tool-path ~/.sonar/dotnet-sonarscanner
-          Get-ChildItem -Path ~/.sonar -Recurse -Force
+          dotnet tool list --tool-path $HOME/.sonar/dotnet-sonarscanner
+          Get-ChildItem -Path $HOME/.sonar -Recurse -Force
 
 #      - name: Build
 #        env:
