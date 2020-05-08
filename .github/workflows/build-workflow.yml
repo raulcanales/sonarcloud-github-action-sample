@@ -54,7 +54,7 @@ jobs:
           # SonarCloud access token should be generated from https://sonarcloud.io/account/security/
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          C:\Users\runneradmin\.sonar\scanner\dotnet-sonarscanner.exe begin /k:"simonbrandhof_sonarcloud-github-action-sample" /o:"simonbrandhof-github" /d:sonar.host.url="https://sonarcloud.io"
+          C:\Users\runneradmin\.sonar\scanner\dotnet-sonarscanner begin /k:"simonbrandhof_sonarcloud-github-action-sample" /o:"simonbrandhof-github" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build SomeConsoleApplication.sln
-          "$HOME\.sonar\scanner\dotnet-sonarscanner.exe" end
+          C:\Users\runneradmin\.sonar\scanner\dotnet-sonarscanner end
 
