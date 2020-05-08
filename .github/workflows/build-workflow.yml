@@ -35,8 +35,7 @@ jobs:
         # The --version argument is optional. If it is omitted the latest version will be installed.
         run: |
           dotnet tool update dotnet-sonarscanner --tool-path ~/.sonar/dotnet-sonarscanner --version 4.8.0
-          cd ~/.sonar/dotnet-sonarscanner
-          echo "foo"
+          cd ~
           dir /s
 
 #      - name: Build
