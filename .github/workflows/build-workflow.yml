@@ -22,19 +22,21 @@ jobs:
           # Shallow clones should be disabled for a better relevancy of analysis
           fetch-depth: 0
 
-      - name: Cache SonarCloud scanner
-        id: cache-sonarcloud-scanner
-        uses: actions/cache@v1
-        with:
-          path: ~/.sonar/dotnet-sonarscanner
-          key: ${{ runner.os }}-dotnet-sonarscanner
-          restore-keys: ${{ runner.os }}-dotnet-sonarscanner
+#      - name: Cache SonarCloud scanner
+#        id: cache-sonarcloud-scanner
+#        uses: actions/cache@v1
+#        with:
+#          path: ~/.sonar/dotnet-sonarscanner
+#          key: ${{ runner.os }}-dotnet-sonarscanner
+#          restore-keys: ${{ runner.os }}-dotnet-sonarscanner
 
       - name: Install SonarCloud scanner
-        if: steps.cache-sonarcloud-scanner.outputs.cache-hit != 'true'
+        #if: steps.cache-sonarcloud-scanner.outputs.cache-hit != 'true'
         # The --version argument is optional. If it is omitted the latest version will be installed.
         run: |
           dotnet tool update --tool-path ~/.sonar/dotnet-sonarscanner dotnet-sonarscanner --version 4.8.0
+          dotnet --help
+          dotnet --version
 
       - name: Build
         env:
@@ -44,7 +46,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           echo "::add-path::~/.sonar/dotnet-sonarscanner"
-          dotnet tool run sonarscanner begin /k:"simonbrandhof_sonarcloud-github-action-sample" /o:"simonbrandhof-github" /d:sonar.host.url="https://sonarcloud.io"
+          dotnet-sonarscanner begin /k:"simonbrandhof_sonarcloud-github-action-sample" /o:"simonbrandhof-github" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build SomeConsoleApplication.sln
-          dotnet tool run sonarscanner end
+          dotnet-sonarscanner end
 
