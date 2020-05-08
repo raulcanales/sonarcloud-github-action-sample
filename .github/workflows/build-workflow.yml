@@ -56,5 +56,5 @@ jobs:
         run: |
           C:\Users\runneradmin\.sonar\scanner\dotnet-sonarscanner begin /k:"simonbrandhof_sonarcloud-github-action-sample" /o:"simonbrandhof-github" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build SomeConsoleApplication.sln
-          C:\Users\runneradmin\.sonar\scanner\dotnet-sonarscanner end
+          ~\.sonar\scanner\dotnet-sonarscanner end
 
