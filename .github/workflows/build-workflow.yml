@@ -47,7 +47,6 @@ jobs:
           Get-ChildItem -Path $HOME\.sonar\scanner -Recurse -Force
 
       - name: Build
-        shell: powershell
         env:
           # Needed to get some information about the pull request, if any
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
