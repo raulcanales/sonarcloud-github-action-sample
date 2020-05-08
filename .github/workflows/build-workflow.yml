@@ -35,8 +35,14 @@ jobs:
         # The --version argument is optional. If it is omitted the latest version will be installed.
         run: |
           dotnet tool update dotnet-sonarscanner --tool-path ~/.sonar/dotnet-sonarscanner --version 4.8.0
-          cd ~
-          dir /s
+
+
+      - name: Debug
+          #if: steps.cache-sonarcloud-scanner.outputs.cache-hit != 'true'
+          # The --version argument is optional. If it is omitted the latest version will be installed.
+          run: |
+            cd %USERPROFILE%
+            dir /s
 
 #      - name: Build
 #        env:
