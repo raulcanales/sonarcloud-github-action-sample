@@ -43,7 +43,9 @@ jobs:
           #if: steps.cache-sonarcloud-scanner.outputs.cache-hit != 'true'
           # The --version argument is optional. If it is omitted the latest version will be installed.
         run: |
-          Get-ChildItem -Path ~/.sonar -Force
+          dotnet tool list
+          dotnet tool list --tool-path ~/.sonar/dotnet-sonarscanner
+          Get-ChildItem -Path ~/.sonar -Recurse -Force
 
 #      - name: Build
 #        env:
