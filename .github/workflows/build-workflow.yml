@@ -35,7 +35,7 @@ jobs:
         # The --version argument is optional. If it is omitted the latest version will be installed.
         shell: powershell
         run: |
-          New-Item -Path $HOME\.sonar\scanner -ItemType Directory
+          New-Item -Path "$HOME\.sonar\scanner" -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path $HOME\.sonar\scanner --version 4.8.0
 
       - name: Debug
@@ -53,7 +53,7 @@ jobs:
           # SonarCloud access token should be generated from https://sonarcloud.io/account/security/
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          dotnet "$HOME\.sonar\scanner\dotnet-sonarscanner" begin /k:"simonbrandhof_sonarcloud-github-action-sample" /o:"simonbrandhof-github" /d:sonar.host.url="https://sonarcloud.io"
+          dotnet tool run "$HOME\.sonar\scanner\dotnet-sonarscanner" begin /k:"simonbrandhof_sonarcloud-github-action-sample" /o:"simonbrandhof-github" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build SomeConsoleApplication.sln
-          dotnet "$HOME\.sonar\scanner\dotnet-sonarscanner" end
+          dotnet tool run "$HOME\.sonar\scanner\dotnet-sonarscanner" end
 
