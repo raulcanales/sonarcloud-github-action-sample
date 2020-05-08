@@ -40,9 +40,9 @@ jobs:
       - name: Debug
           #if: steps.cache-sonarcloud-scanner.outputs.cache-hit != 'true'
           # The --version argument is optional. If it is omitted the latest version will be installed.
-          run: |
-            cd ~
-            dir /s
+        run: |
+          cd ~
+          dir /s
 
 #      - name: Build
 #        env:
