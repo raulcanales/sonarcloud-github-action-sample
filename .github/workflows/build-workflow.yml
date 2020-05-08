@@ -33,16 +33,17 @@ jobs:
       - name: Install SonarCloud scanner
         #if: steps.cache-sonarcloud-scanner.outputs.cache-hit != 'true'
         # The --version argument is optional. If it is omitted the latest version will be installed.
+        shell: powershell
         run: |
           dotnet tool update dotnet-sonarscanner --tool-path ~/.sonar/dotnet-sonarscanner --version 4.8.0
 
 
       - name: Debug
+        shell: powershell
           #if: steps.cache-sonarcloud-scanner.outputs.cache-hit != 'true'
           # The --version argument is optional. If it is omitted the latest version will be installed.
         run: |
-          cd ~
-          dir /s
+          Get-ChildItem -Path ~/.sonar -Force
 
 #      - name: Build
 #        env:
