@@ -21,16 +21,18 @@ jobs:
         with:
           # Shallow clones should be disabled for a better relevancy of analysis
           fetch-depth: 0
-      - name: Cache dotnet tools
+      - name: Cache SonarCloud scanner
+        id: cache-sonarcloud-scanner
         uses: actions/cache@v1
         with:
-          path: ~/.dotnet/tools
-          key: ${{ runner.os }}-dotnettools
-          restore-keys: ${{ runner.os }}-dotnettools
+          path: ~/.sonar/dotnet-sonarscanner
+          key: ${{ runner.os }}-dotnet-sonarscanner
+          restore-keys: ${{ runner.os }}-dotnet-sonarscanner
       - name: Install SonarCloud scanner
+        if: steps.cache-sonarcloud-scanner.outputs.cache-hit != 'true'
         # The --version argument is optional. If it is omitted the latest version will be installed.
         run: |
-          dotnet tool update --global dotnet-sonarscanner --version 4.8.0
+          dotnet tool update --tool-path ~/.sonar/dotnet-sonarscanner dotnet-sonarscanner --version 4.8.0
       - name: Build
         env:
           # Needed to get some information about the pull request, if any
